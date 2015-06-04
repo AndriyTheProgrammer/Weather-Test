@@ -1,8 +1,100 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#ffd8eeff">
 
 
+    <view
+        class="com.android.volley.toolbox.NetworkImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/backgroundImage"
+        android:src="@mipmap/offline_background"
+        android:scaleType="centerCrop" />
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|bottom">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView5"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="City"
+                    android:id="@+id/textView8"
+                    android:layout_gravity="center"
+                    android:textSize="24dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/imageView6"
+                    android:src="@android:drawable/stat_notify_sync"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Last update: 11:05"
+                    android:id="@+id/textView9"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textColor="#ff67747d" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.test.weather.ui.MainInfoFragment"
+            android:id="@+id/fragment2"
+            tools:layout="@layout/fragment_main_information"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp" />
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.test.weather.ui.FullInfoFragment"
+            android:id="@+id/fragment3"
+            android:layout_gravity="center_horizontal"
+            tools:layout="@layout/fragment_full_info"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
+</FrameLayout>
