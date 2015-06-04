@@ -6,4 +6,11 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="GPSAlertDialogTitle">Alert</string>
+    <string name="GPSAlertDialogMessage">Please turn on GPS</string>
+    <string name="cancel">Cancel</string>
+
+
 </resources>

@@ -35,7 +35,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView3"
+                    android:id="@+id/iconLocation"
                     android:src="@android:drawable/ic_menu_mylocation"
                     android:layout_gravity="center" />
 
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:name="com.test.weather.ui.MainInfoFragment"
-            android:id="@+id/fragment"
+            android:id="@+id/mainInfoFragment"
             tools:layout="@layout/fragment_main_information"
             android:layout_margin="15dp" />
 
@@ -63,7 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:name="com.test.weather.ui.FullInfoFragment"
-            android:id="@+id/fragment4"
+            android:id="@+id/fullInfoFragment"
             android:layout_gravity="center_horizontal"
             tools:layout="@layout/fragment_full_info"
             android:layout_margin="15dp" />
