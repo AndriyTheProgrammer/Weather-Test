@@ -10,32 +10,6 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Day"
-            android:id="@+id/textView11"
-            android:layout_marginLeft="5dp"
-            android:textSize="@dimen/normal" />
-
-        <ImageView
-            android:layout_width="@dimen/normal_ic_width"
-            android:layout_height="@dimen/normal_ic_height"
-            android:id="@+id/imageView7"
-            android:src="@mipmap/sun" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
@@ -63,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="18\u00B0"
-                    android:id="@+id/textView13"
+                    android:id="@+id/tvMaxTemp"
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:textSize="@dimen/small2" />
@@ -87,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="-18\u00B0"
-                    android:id="@+id/textView1511"
+                    android:id="@+id/tvMinTemp"
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:textSize="@dimen/small2" />
@@ -102,32 +76,6 @@
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="@dimen/smallest_ic_width"
-                    android:layout_height="@dimen/smallest_ic_height"
-                    android:id="@+id/imageView121"
-                    android:src="@mipmap/humidity"
-                    android:layout_marginLeft="20dp"
-                    android:scaleType="fitCenter"
-                    android:layout_gravity="center" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="99%"
-                    android:id="@+id/textView151"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="2dp"
-                    android:textSize="@dimen/small2" />
-            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -148,12 +96,38 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="1015 hPa"
-                    android:id="@+id/textView7"
+                    android:id="@+id/tvPressure"
                     android:textStyle="bold"
                     android:layout_gravity="center"
                     android:layout_marginLeft="2dp"
                     android:textSize="@dimen/small2" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/smallest_ic_width"
+                    android:layout_height="@dimen/smallest_ic_height"
+                    android:id="@+id/imageView121"
+                    android:src="@mipmap/humidity"
+                    android:layout_marginLeft="20dp"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="99%"
+                    android:id="@+id/tvHumidity"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="2dp"
+                    android:textSize="@dimen/small2" />
             </LinearLayout>
 
         </LinearLayout>
@@ -171,7 +145,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:id="@+id/imageView8"
+                android:id="@+id/imageWindDirection"
                 android:src="@android:drawable/ic_menu_send" />
 
             <TextView
@@ -179,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="999 mph"
-                android:id="@+id/textView12"
+                android:id="@+id/tvWindForce"
                 android:textSize="@dimen/small2" />
         </LinearLayout>
     </LinearLayout>

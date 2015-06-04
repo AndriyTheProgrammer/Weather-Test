@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -23,6 +24,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     ImageView iconLocation;
     NetworkImageView backgroundImage;
     ImageLoader mImageLoader;
+    TextView tvCity;
 
     MainInfoFragment mainInfoFragment;
     FullInfoFragment fullInfoFragment;
@@ -32,6 +34,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     String city;
     int longitude, latitude;
 
+    ArrayList<WeatherInfo> forecast;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,14 +43,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         backgroundImage = (NetworkImageView) findViewById(R.id.backgroundImage);
         iconLocation = (ImageView) findViewById(R.id.iconLocation);
+        tvCity = (TextView) findViewById(R.id.tvCity);
         mainInfoFragment = (MainInfoFragment) getFragmentManager().findFragmentById(R.id.mainInfoFragment);
         fullInfoFragment = (FullInfoFragment) getFragmentManager().findFragmentById(R.id.fullInfoFragment);
-
 
         iconLocation.setOnClickListener(this);
 
         mImageLoader = VolleySingleton.getInstance(this).getImageLoader();
         updatePosition();
+
 
     }
 
@@ -69,6 +74,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             latitude = (int) gpsTracker.getLatitude();
 
             city = gpsTracker.getLocality(this);
+            tvCity.setText(city);
             Log.d("MainActivity", "Position Updated. lon: " + longitude + "; lat: " + latitude + "; city: " + city);
         }
         else
@@ -96,4 +102,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onError(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
+
+
+
 }

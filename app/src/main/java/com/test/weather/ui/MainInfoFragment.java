@@ -1,47 +1,30 @@
 package com.test.weather.ui;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.test.weather.R;
+import com.test.weather.net.WeatherInfo;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MainInfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+
 public class MainInfoFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    ArrayList<WeatherInfo> weeklyForecast;
+    TextView tvCurrentTemp;
+    ImageView imageCurrentWeather;
 
+    ViewGroup[] forecastDaysContainers;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MainInformationFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MainInfoFragment newInstance(String param1, String param2) {
-        MainInfoFragment fragment = new MainInfoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    LayoutInflater inflater;
+
 
     public MainInfoFragment() {
         // Required empty public constructor
@@ -50,18 +33,50 @@ public class MainInfoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_information, container, false);
+        this.inflater = inflater;
+        View root = inflater.inflate(R.layout.fragment_main_information, container, false);
+        tvCurrentTemp = (TextView) root.findViewById(R.id.tvCurrentTemp);
+        imageCurrentWeather = (ImageView) root.findViewById(R.id.imageCurrentWeather);
+        forecastDaysContainers = new ViewGroup[]{
+                (ViewGroup) root.findViewById(R.id.dayContainer1),
+                (ViewGroup) root.findViewById(R.id.dayContainer2),
+                (ViewGroup) root.findViewById(R.id.dayContainer3),
+                (ViewGroup) root.findViewById(R.id.dayContainer4),
+                (ViewGroup) root.findViewById(R.id.dayContainer5)
+        };
+
+
+        return root;
     }
 
+    public void setWeeklyForecast(ArrayList<WeatherInfo> weeklyForecast) {
+        this.weeklyForecast = weeklyForecast;
 
+
+        tvCurrentTemp.setText((weeklyForecast.get(0).getMaxTemp() + weeklyForecast.get(0).getMinTemp())/2 + "\u00B0");
+
+        for (int i = 1; i < 5; i++){
+            WeatherInfo weather = weeklyForecast.get(i);
+            View forecastView = inflater.inflate(R.layout.weather_item, forecastDaysContainers[i], true);
+            TextView tvForecastDay = (TextView) forecastView.findViewById(R.id.tvForecastDay);
+            ImageView imageForecast = (ImageView) forecastView.findViewById(R.id.imageForecast);
+            TextView tvForecastMaxTemp = (TextView) forecastView.findViewById(R.id.tvForecastMaxTemp);
+            TextView tvForecastMinTemp = (TextView) forecastView.findViewById(R.id.tvForecastMinTemp);
+            tvForecastDay.setText(weather.getDay());
+            imageForecast.setImageDrawable(getResources().getDrawable(ImageCodeParser.parse(weather.getIconCode())));
+            tvForecastMaxTemp.setText(weather.getMaxTemp() + "\u00B0");
+            tvForecastMinTemp.setText(weather.getMinTemp() + "\u00B0");
+        }
+
+
+    }
 }

@@ -38,7 +38,7 @@
                 <ImageView
                     android:layout_width="@dimen/big_ic_width"
                     android:layout_height="@dimen/big_ic_height"
-                    android:id="@+id/imageView"
+                    android:id="@+id/imageCurrentWeather"
                     android:src="@mipmap/sun"
                     android:layout_gravity="center" />
 
@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="18\u00B0"
-                    android:id="@+id/textView"
+                    android:id="@+id/tvCurrentTemp"
                     android:textStyle="bold"
                     android:textSize="@dimen/large"
                     android:layout_gravity="center" />

@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="City"
-                    android:id="@+id/textView6"
+                    android:id="@+id/tvCity"
                     android:layout_gravity="center"
                     android:textSize="@dimen/large" />
             </LinearLayout>
