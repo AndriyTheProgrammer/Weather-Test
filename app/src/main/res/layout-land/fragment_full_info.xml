@@ -1,47 +1,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="wrap_content" tools:context="com.test.weather.ui.FullInfoFragment"
-    android:background="#fff3f3f3"
+    android:background="@color/block_background"
     android:orientation="horizontal"
-    android:padding="5dp">
+    android:padding="2dp"
+    android:gravity="center">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Day"
+            android:id="@+id/textView11"
+            android:layout_marginLeft="5dp"
+            android:textSize="@dimen/normal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Day"
-                android:id="@+id/textView11"
-                android:layout_marginLeft="5dp" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/imageView7"
-                android:src="@mipmap/sun" />
-        </LinearLayout>
+        <ImageView
+            android:layout_width="@dimen/normal_ic_width"
+            android:layout_height="@dimen/normal_ic_height"
+            android:id="@+id/imageView7"
+            android:src="@mipmap/sun" />
 
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="2dp"
         android:layout_height="match_parent"
-        android:background="@color/divider_color"
+        android:background="@color/divider"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="2dp"
@@ -50,7 +46,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -61,8 +58,8 @@
             android:layout_marginRight="20dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/smallest_ic_width"
+                android:layout_height="@dimen/smallest_ic_height"
                 android:id="@+id/imageView9"
                 android:src="@mipmap/hot" />
 
@@ -73,11 +70,12 @@
                 android:text="18\u00B0"
                 android:id="@+id/textView13"
                 android:textStyle="bold"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:textSize="@dimen/small2" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/smallest_ic_width"
+                android:layout_height="@dimen/smallest_ic_height"
                 android:id="@+id/imageView10"
                 android:src="@mipmap/barometer"
                 android:layout_marginLeft="20dp" />
@@ -90,7 +88,8 @@
                 android:id="@+id/textView14"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:layout_marginLeft="2dp" />
+                android:layout_marginLeft="2dp"
+                android:textSize="@dimen/small2" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,8 +102,8 @@
             android:layout_marginTop="10dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/smallest_ic_width"
+                android:layout_height="@dimen/smallest_ic_height"
                 android:id="@+id/imageView111"
                 android:src="@mipmap/cool" />
 
@@ -115,11 +114,12 @@
                 android:text="-18\u00B0"
                 android:id="@+id/textView1511"
                 android:textStyle="bold"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:textSize="@dimen/small2" />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="@dimen/smallest_ic_width"
+                android:layout_height="@dimen/smallest_ic_height"
                 android:id="@+id/imageView121"
                 android:src="@mipmap/humidity"
                 android:layout_marginLeft="20dp" />
@@ -132,19 +132,21 @@
                 android:id="@+id/textView151"
                 android:textStyle="bold"
                 android:layout_gravity="center"
-                android:layout_marginLeft="2dp" />
+                android:layout_marginLeft="2dp"
+                android:textSize="@dimen/small2" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="right" >
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_gravity="center">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:id="@+id/imageView11"
             android:src="@android:drawable/ic_menu_send" />
 
@@ -153,7 +155,8 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="999 mph"
-            android:id="@+id/textView15" />
+            android:id="@+id/textView15"
+            android:textSize="@dimen/small2" />
     </LinearLayout>
 
 </LinearLayout>

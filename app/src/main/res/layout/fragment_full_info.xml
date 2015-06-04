@@ -1,8 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="wrap_content" tools:context="com.test.weather.ui.FullInfoFragment"
-    android:background="#fff3f3f3"
-    android:orientation="vertical">
+    android:background="@color/block_background"
+    android:orientation="vertical"
+    android:padding="2dp">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -15,37 +16,161 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="2dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Day"
+            android:id="@+id/textView11"
+            android:layout_marginLeft="5dp"
+            android:textSize="@dimen/normal" />
+
+        <ImageView
+            android:layout_width="@dimen/normal_ic_width"
+            android:layout_height="@dimen/normal_ic_height"
+            android:id="@+id/imageView7"
+            android:src="@mipmap/sun" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/smallest_ic_width"
+                    android:layout_height="@dimen/smallest_ic_height"
+                    android:id="@+id/imageView9"
+                    android:src="@mipmap/hot"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="18\u00B0"
+                    android:id="@+id/textView13"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/small2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Day"
-                android:id="@+id/textView11"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginTop="5dp">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/imageView7"
-                android:src="@mipmap/sun" />
+                <ImageView
+                    android:layout_width="@dimen/smallest_ic_width"
+                    android:layout_height="@dimen/smallest_ic_height"
+                    android:id="@+id/imageView111"
+                    android:src="@mipmap/cool"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="-18\u00B0"
+                    android:id="@+id/textView1511"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/small2" />
+            </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right">
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="@dimen/smallest_ic_width"
+                    android:layout_height="@dimen/smallest_ic_height"
+                    android:id="@+id/imageView121"
+                    android:src="@mipmap/humidity"
+                    android:layout_marginLeft="20dp"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="99%"
+                    android:id="@+id/textView151"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="2dp"
+                    android:textSize="@dimen/small2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+
+                <ImageView
+                    android:layout_width="@dimen/smallest_ic_width"
+                    android:layout_height="@dimen/smallest_ic_height"
+                    android:id="@+id/imageView4"
+                    android:src="@mipmap/barometer"
+                    android:layout_marginLeft="20dp"
+                    android:scaleType="fitCenter" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="1015 hPa"
+                    android:id="@+id/textView7"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="2dp"
+                    android:textSize="@dimen/small2" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/imageView8"
                 android:src="@android:drawable/ic_menu_send" />
 
@@ -54,97 +179,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="999 mph"
-                android:id="@+id/textView12" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/imageView9"
-                android:src="@mipmap/hot" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="18\u00B0"
-                android:id="@+id/textView13"
-                android:textStyle="bold"
-                android:layout_gravity="center" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/imageView10"
-                android:src="@mipmap/barometer"
-                android:layout_marginLeft="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="1015 hPa"
-                android:id="@+id/textView14"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginLeft="2dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/imageView111"
-                android:src="@mipmap/cool" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="-18\u00B0"
-                android:id="@+id/textView1511"
-                android:textStyle="bold"
-                android:layout_gravity="center" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:id="@+id/imageView121"
-                android:src="@mipmap/humidity"
-                android:layout_marginLeft="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="99%"
-                android:id="@+id/textView151"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginLeft="2dp" />
+                android:id="@+id/textView12"
+                android:textSize="@dimen/small2" />
         </LinearLayout>
     </LinearLayout>
 

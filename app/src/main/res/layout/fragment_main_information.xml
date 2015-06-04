@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     tools:context="com.test.weather.ui.MainInfoFragment"
     android:orientation="vertical"
-    android:background="#fff3f3f3">
+    android:background="@color/block_background">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -13,7 +13,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Today"
         android:id="@+id/textView5"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/large" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -23,8 +24,8 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="@dimen/big_ic_width"
+            android:layout_height="@dimen/big_ic_height"
             android:id="@+id/imageView"
             android:src="@mipmap/sun" />
 
@@ -35,18 +36,16 @@
             android:text="18\u00B0"
             android:id="@+id/textView"
             android:textStyle="bold"
-            android:textSize="30sp"
+            android:textSize="@dimen/large"
             android:layout_gravity="center" />
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/divider_color"
+        android:background="@color/divider"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"></FrameLayout>
+        android:layout_marginRight="5dp"></FrameLayout>
 
     <LinearLayout
         android:orientation="horizontal"

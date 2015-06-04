@@ -9,29 +9,40 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Day"
         android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/small2" />
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/small_ic_width"
+        android:layout_height="@dimen/small_ic_height"
         android:id="@+id/imageView2"
         android:layout_gravity="center_horizontal"
         android:src="@mipmap/sun" />
 
-    <TextView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="18 \u00B0"
-        android:id="@+id/textView3"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="16 \u00B0"
-        android:id="@+id/textView4"
-        android:layout_gravity="center_horizontal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="18 \u00B0"
+            android:id="@+id/textView3"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="16 \u00B0"
+            android:id="@+id/textView4"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/small" />
+    </LinearLayout>
+
 </LinearLayout>
