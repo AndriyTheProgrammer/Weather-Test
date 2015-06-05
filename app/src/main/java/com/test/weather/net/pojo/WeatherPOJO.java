@@ -1,4 +1,4 @@
-package com.test.weather.net;
+package com.test.weather.net.pojo;
 
 
 import java.util.ArrayList;

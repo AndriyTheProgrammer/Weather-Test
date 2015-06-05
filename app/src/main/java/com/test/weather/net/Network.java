@@ -8,6 +8,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.test.weather.net.pojo.PhotoPOJO;
+import com.test.weather.net.pojo.PhotosetPOJO;
+import com.test.weather.net.pojo.WeatherInfo;
+import com.test.weather.net.pojo.WeatherPOJO;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,29 +26,40 @@ import java.util.Date;
  */
 public class Network implements NetworkInterface {
 
-    String requestedCity, photoUrl;
-    long cityPhotoFlickrID;
-    ResultListener resultListener;
-    Context context;
-    GsonBuilder gsonBuilder;
-    Gson gson;
-    WeatherPOJO weatherPOJO;
+    protected String requestedCity, photoUrl;
+    protected long cityPhotoFlickrID;
+
+    //Used to communicate with activity
+    protected ResultListener resultListener;
+
+    protected Context context;
+
+    //Gson classes
+    protected GsonBuilder gsonBuilder;
+    protected Gson gson;
+
+    //POJO to keep in it JSON response from Weather API
+    protected WeatherPOJO weatherPOJO;
 
 
     public Network() {
+        // Initializing Gson library
         gsonBuilder = new GsonBuilder();
         gson = gsonBuilder.create();
 
     }
 
+    //Called always when MainActivity requests for an update
     @Override
     public void requestUpdate(String cityName, final ResultListener resultListener) {
         requestedCity = cityName;
         this.resultListener = resultListener;
 
+        // Constructing GET requests
         String weatherUrlRequest = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + requestedCity + "&mode=json&units=metric&cnt=5";
         String flickrAlbumUrlRequest = "https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=7f69c27c9e7735a155869d29c1564af9&photoset_id=72157653569823650&user_id=133807839%40N03&format=json&nojsoncallback=1";
 
+        // This request filling WeatherPOJO object with data from Weather API
         JsonObjectRequest weatherRequest = new JsonObjectRequest(Request.Method.GET, weatherUrlRequest, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
@@ -65,6 +80,8 @@ public class Network implements NetworkInterface {
 
 
 
+        // This request filling PhotosetPOJO object from Flickr. PhotosetPOJO it's a class with information
+        // about all photos in album, and containing name of city and its photo ID for each item in Flickr album
         JsonObjectRequest albumRequest = new JsonObjectRequest(Request.Method.GET, flickrAlbumUrlRequest, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
@@ -83,7 +100,8 @@ public class Network implements NetworkInterface {
                     if (cityPhotoFlickrID == -1){
                         resultListener.onPhotoReceived(null);
                     }else
-                    // if photo in database - get URL of it original
+                    // Ok, we have photo with requested city, in this method we creating new request with photoID
+                    // and retrieving photo's URL
                         requestPhotoUrl();
 
 
@@ -102,6 +120,7 @@ public class Network implements NetworkInterface {
             }
         });
 
+        // adding this both request to Volley queue
         VolleySingleton.getInstance(context).addToRequestQueue(weatherRequest);
         VolleySingleton.getInstance(context).addToRequestQueue(albumRequest);
 
@@ -117,6 +136,7 @@ public class Network implements NetworkInterface {
             public void onResponse(JSONObject jsonObject) {
                 try {
                     PhotoPOJO[] photoPOJOs = gson.fromJson(jsonObject.getJSONObject("sizes").getJSONArray("size").toString(), PhotoPOJO[].class);
+
 
                     for (int i = 0; i < photoPOJOs.length; i++){
 
@@ -144,6 +164,7 @@ public class Network implements NetworkInterface {
         VolleySingleton.getInstance(context).addToRequestQueue(photoRequest);
     }
 
+    // Here converting information from WeatherPOJO into easier to understand WeatherInfo
     private ArrayList<WeatherInfo> getWeatherInformation() {
         ArrayList<WeatherInfo> weatherInformation= new ArrayList<WeatherInfo>();
 

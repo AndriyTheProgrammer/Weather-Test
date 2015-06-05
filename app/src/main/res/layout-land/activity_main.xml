@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#ffd8eeff"
 
     >
 
@@ -13,7 +12,8 @@
         android:layout_height="match_parent"
         android:id="@+id/backgroundImage"
         android:src="@mipmap/offline_background"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:background="@mipmap/offline_background_land" />
 
     <LinearLayout
         android:orientation="vertical"

@@ -1,5 +1,7 @@
 package com.test.weather.net;
 
+import com.test.weather.net.pojo.WeatherInfo;
+
 import java.util.ArrayList;
 
 /**

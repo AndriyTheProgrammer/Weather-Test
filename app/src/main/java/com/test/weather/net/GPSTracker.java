@@ -21,13 +21,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * Create this Class from tutorial : 
- * http://www.androidhive.info/2012/07/android-gps-location-manager-tutorial
- * 
- * For Geocoder read this : http://stackoverflow.com/questions/472313/android-reverse-geocoding-getfromlocation
- * 
- */
+
 
 public class GPSTracker extends Service implements LocationListener {
 

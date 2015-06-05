@@ -9,6 +9,7 @@ public class ImageCodeParser {
 
 
     /**
+     * Used to just to convert code from Weather API into resource id
      * @param code Image code from http://openweathermap.org/
      * @return Mipmap id;
      */

@@ -1,4 +1,4 @@
-package com.test.weather.net;
+package com.test.weather.net.pojo;
 
 /**
  * Created by User on 05.06.2015.

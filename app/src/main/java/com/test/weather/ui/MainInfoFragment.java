@@ -10,39 +10,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.test.weather.R;
-import com.test.weather.net.WeatherInfo;
+import com.test.weather.net.pojo.WeatherInfo;
 
 import java.util.ArrayList;
 
 
+/**
+ * Fragment used to show weather forecast for 5 days, and show basic information about it
+ */
+
 public class MainInfoFragment extends Fragment implements View.OnClickListener {
 
+
     final static int NONE_SELECTED = -1;
+
     ArrayList<WeatherInfo> weeklyForecast;
     TextView tvCurrentTemp;
     ImageView imageCurrentWeather;
     View root;
+
+    //shows which day chosen by the user, can be NONE_SELECTED, or by resID of its parent
     int selectedItem = NONE_SELECTED;
 
-
+    // layouts to contain weather forecast items
     ViewGroup[] forecastDaysContainers;
-
     LayoutInflater inflater;
 
+    // Used to contact MainActivity when someones click on some day
     FragmentInteractionListener fragmentInteractionListener;
 
-    public MainInfoFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +62,11 @@ public class MainInfoFragment extends Fragment implements View.OnClickListener {
         return root;
     }
 
+
+    /**
+     *  Used to fill this fragment with weather information from Activity
+     *  @param weeklyForecast few WeatherInfo's
+     */
     public void setWeeklyForecast(ArrayList<WeatherInfo> weeklyForecast) {
         if (getActivity() != null) {
             this.weeklyForecast = weeklyForecast;
@@ -93,6 +94,7 @@ public class MainInfoFragment extends Fragment implements View.OnClickListener {
 
 
 
+
     @Override
     public void onClick(View v) {
         root.findViewById(v.getId()).setBackgroundResource(R.color.selected_weather);
@@ -113,6 +115,8 @@ public class MainInfoFragment extends Fragment implements View.OnClickListener {
 
     }
 
+
+    // Clearing callback to prevent memory leaks
     @Override
     public void onDetach() {
         super.onDetach();

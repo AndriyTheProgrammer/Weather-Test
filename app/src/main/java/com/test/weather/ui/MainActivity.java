@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -19,7 +18,7 @@ import com.test.weather.net.Network;
 import com.test.weather.net.NetworkInterface;
 import com.test.weather.net.ResultListener;
 import com.test.weather.net.VolleySingleton;
-import com.test.weather.net.WeatherInfo;
+import com.test.weather.net.pojo.WeatherInfo;
 
 import java.util.ArrayList;
 
@@ -37,7 +36,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     String backgroundPhotoUrl;
 
     String city;
-    int longitude, latitude;
+
 
     ArrayList<WeatherInfo> forecast;
     NetworkInterface networkInterface;
@@ -90,17 +89,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 
 
+    // Used to receive city from GPS/Network
     private void updatePosition(){
         GPSTracker gpsTracker = new GPSTracker(this);
 
         if (gpsTracker.getIsGPSTrackingEnabled())
         {
-            longitude = (int) gpsTracker.getLongitude();
-            latitude = (int) gpsTracker.getLatitude();
-
             city = gpsTracker.getLocality(this);
             tvCity.setText(city);
-            Log.d("MainActivity", "Position Updated. lon: " + longitude + "; lat: " + latitude + "; city: " + city);
         }
         else
         {
@@ -113,7 +109,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
-
+    // Requesting update for current city, second param is callback where we will get all information
     protected void requestUpdate(String city){
         networkInterface.requestUpdate(city, this);
     }
@@ -121,6 +117,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 
 
+    //Dialog which allows user to enter some another city
     void showEnterLocationDialog(){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
@@ -151,6 +148,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 
 
+    //We received weather forecast
     @Override
     public void onWeatherReceived(ArrayList<WeatherInfo> weatherInfos) {
         forecast = weatherInfos;
@@ -158,12 +156,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
+    //We received photo url for current city
     @Override
     public void onPhotoReceived(String photoUrl) {
         backgroundPhotoUrl = photoUrl;
         backgroundImage.setImageUrl(photoUrl, mImageLoader);
     }
 
+    // Something went wrong, for example page not found, etc.
     @Override
     public void onError(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();

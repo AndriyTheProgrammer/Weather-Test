@@ -1,8 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#ffe3f8ff">
+    tools:context=".MainActivity">
 
 
     <view
@@ -10,8 +9,8 @@
         android:layout_height="match_parent"
         class="com.android.volley.toolbox.NetworkImageView"
         android:id="@+id/backgroundImage"
-        android:src="@mipmap/offline_background"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:background="@mipmap/offline_background" />
 
     <LinearLayout
         android:orientation="vertical"

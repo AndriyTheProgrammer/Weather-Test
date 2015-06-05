@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.test.weather.R;
-import com.test.weather.net.WeatherInfo;
+import com.test.weather.net.pojo.WeatherInfo;
 
 
 public class FullInfoFragment extends Fragment {
@@ -20,20 +20,11 @@ public class FullInfoFragment extends Fragment {
     ImageView imageWindDirection;
     View root;
 
-
+    // Nothing special, just information about weather
     WeatherInfo weather;
 
 
 
-    public FullInfoFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,10 +42,12 @@ public class FullInfoFragment extends Fragment {
         return root;
     }
 
+    /**
+     * Used to fill this fragment with weather information from Activity
+     * @param weather weather information
+     */
     public void setWeather(WeatherInfo weather) {
         this.weather = weather;
-
-
         tvMinTemp.setText(weather.getMinTemp() + "\u00B0");
         tvMaxTemp.setText(weather.getMaxTemp() + "\u00B0");
         tvPressure.setText(weather.getPressure() + "hPa");
@@ -65,18 +58,21 @@ public class FullInfoFragment extends Fragment {
     }
 
 
+    // shows Fragment =)
     public void show(){
         if (getActivity() != null){
             root.setVisibility(View.VISIBLE);
         }
     }
 
+    // and this hides Fragment =)
     public void hide(){
         if (getActivity() != null){
             root.setVisibility(View.GONE);
         }
     }
 
+    // guess what
     public boolean isShowing(){
         return root.getVisibility() != View.VISIBLE;
     }
