@@ -1,9 +1,12 @@
 package com.test.weather.ui;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,8 +61,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mImageLoader = VolleySingleton.getInstance(this).getImageLoader();
         networkInterface = new Network();
         updatePosition();
+        requestUpdate(city);
 
-        networkInterface.requestUpdate("L'viv", this);
 
 
 
@@ -71,7 +74,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-
+        showEnterLocationDialog();
     }
 
     @Override
@@ -111,22 +114,59 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
 
+    protected void requestUpdate(String city){
+        networkInterface.requestUpdate(city, this);
+    }
+
+
+
+
+    void showEnterLocationDialog(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+
+        alert.setTitle("Location");
+        alert.setMessage("Please enter your location");
+
+// Set an EditText view to get user input
+        final EditText input = new EditText(this);
+        alert.setView(input);
+
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                city = input.getText().toString();
+                tvCity.setText(city);
+                requestUpdate(city);
+
+            }
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // Canceled.
+            }
+        });
+
+        alert.show();
+    }
+
 
 
     @Override
-    public void onUpdateCompleted(String photoUrl, ArrayList<WeatherInfo> weatherInfos) {
+    public void onWeatherReceived(ArrayList<WeatherInfo> weatherInfos) {
         forecast = weatherInfos;
-        backgroundPhotoUrl = photoUrl;
-        backgroundImage.setImageUrl(photoUrl, mImageLoader);
         mainInfoFragment.setWeeklyForecast(weatherInfos);
 
+    }
+
+    @Override
+    public void onPhotoReceived(String photoUrl) {
+        backgroundPhotoUrl = photoUrl;
+        backgroundImage.setImageUrl(photoUrl, mImageLoader);
     }
 
     @Override
     public void onError(String errorMessage) {
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
-
-
 
 }

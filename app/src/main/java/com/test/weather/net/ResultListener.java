@@ -7,7 +7,9 @@ import java.util.ArrayList;
  */
 public interface ResultListener {
 
-    void onUpdateCompleted(String photoUrl, ArrayList<WeatherInfo> weatherInfos);
+    void onWeatherReceived(ArrayList<WeatherInfo> weatherInfos);
+
+    void onPhotoReceived(String photoUrl);
 
     void onError(String errorMessage);
 

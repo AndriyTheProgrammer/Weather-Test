@@ -70,10 +70,11 @@ public class MainInfoFragment extends Fragment implements View.OnClickListener {
         if (getActivity() != null) {
             this.weeklyForecast = weeklyForecast;
 
-
             tvCurrentTemp.setText((weeklyForecast.get(0).getMaxTemp() + weeklyForecast.get(0).getMinTemp()) / 2 + "\u00B0");
+            imageCurrentWeather.setImageDrawable(getResources().getDrawable(ImageCodeParser.parse(weeklyForecast.get(0).getIconCode())));
 
             for (int i = 1; i < forecastDaysContainers.length; i++) {
+                forecastDaysContainers[i].removeAllViews();
                 WeatherInfo weather = weeklyForecast.get(i);
                 View forecastView = inflater.inflate(R.layout.weather_item, forecastDaysContainers[i], true);
                 TextView tvForecastDay = (TextView) forecastView.findViewById(R.id.tvForecastDay);
