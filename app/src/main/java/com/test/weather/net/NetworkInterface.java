@@ -5,9 +5,7 @@ package com.test.weather.net;
  */
 public interface NetworkInterface {
 
-    void requestUpdate(String cityName);
-
-    void requestUpdate(int longitude, int latitude);
+    void requestUpdate(String cityName, ResultListener resultListener);
 
 
 

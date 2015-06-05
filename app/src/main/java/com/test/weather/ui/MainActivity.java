@@ -12,6 +12,8 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.test.weather.R;
 import com.test.weather.net.GPSTracker;
+import com.test.weather.net.Network;
+import com.test.weather.net.NetworkInterface;
 import com.test.weather.net.ResultListener;
 import com.test.weather.net.VolleySingleton;
 import com.test.weather.net.WeatherInfo;
@@ -35,6 +37,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     int longitude, latitude;
 
     ArrayList<WeatherInfo> forecast;
+    NetworkInterface networkInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         iconLocation.setOnClickListener(this);
 
         mImageLoader = VolleySingleton.getInstance(this).getImageLoader();
+        networkInterface = new Network();
         updatePosition();
+
+        networkInterface.requestUpdate("L'viv", this);
 
 
     }
@@ -95,6 +101,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onUpdateCompleted(String photoUrl, ArrayList<WeatherInfo> weatherInfos) {
         backgroundPhotoUrl = photoUrl;
         backgroundImage.setImageUrl(photoUrl, mImageLoader);
+        mainInfoFragment.setWeeklyForecast(weatherInfos);
+        fullInfoFragment.setWeather(weatherInfos.get(0));
 
     }
 
