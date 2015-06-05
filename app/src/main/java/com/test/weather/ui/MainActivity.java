@@ -21,7 +21,7 @@ import com.test.weather.net.WeatherInfo;
 import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener, ResultListener {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener, FragmentInteractionListener, ResultListener {
 
     ImageView iconLocation;
     NetworkImageView backgroundImage;
@@ -38,6 +38,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     ArrayList<WeatherInfo> forecast;
     NetworkInterface networkInterface;
+
+    int dayToShow;
+    boolean showFullInfo = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         networkInterface.requestUpdate("L'viv", this);
 
 
+
     }
 
 
@@ -69,6 +73,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 
     }
+
+    @Override
+    public void onWeatherButtonClicked(int clickedDay) {
+      if (clickedDay != MainInfoFragment.NONE_SELECTED){
+          fullInfoFragment.setWeather(forecast.get(clickedDay));
+          fullInfoFragment.show();
+      }else{
+          fullInfoFragment.hide();
+      }
+
+    }
+
 
 
     private void updatePosition(){
@@ -99,10 +115,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onUpdateCompleted(String photoUrl, ArrayList<WeatherInfo> weatherInfos) {
+        forecast = weatherInfos;
         backgroundPhotoUrl = photoUrl;
         backgroundImage.setImageUrl(photoUrl, mImageLoader);
         mainInfoFragment.setWeeklyForecast(weatherInfos);
-        fullInfoFragment.setWeather(weatherInfos.get(0));
 
     }
 

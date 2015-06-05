@@ -3,7 +3,8 @@
     android:layout_height="wrap_content" tools:context="com.test.weather.ui.FullInfoFragment"
     android:background="@color/block_background"
     android:orientation="vertical"
-    android:padding="2dp">
+    android:padding="2dp"
+    android:visibility="gone">
 
     <!-- TODO: Update blank fragment layout -->
 

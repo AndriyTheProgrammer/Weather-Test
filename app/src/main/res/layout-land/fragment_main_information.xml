@@ -17,7 +17,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:gravity="center">
+            android:gravity="center"
+            android:padding="5dp"
+            android:id="@+id/dayContainer1">
 
             <TextView
                 android:layout_width="match_parent"
@@ -58,40 +60,36 @@
         <FrameLayout
             android:layout_width="2dp"
             android:layout_height="match_parent"
-            android:background="@color/divider"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"></FrameLayout>
+            android:background="@color/divider"></FrameLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <include
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                layout="@layout/weather_item"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/dayContainer2" />
 
-            <include
-                layout="@layout/weather_item"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/dayContainer3" />
 
-            <include
-                layout="@layout/weather_item"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/dayContainer4" />
 
-            <include
-                layout="@layout/weather_item"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/dayContainer5" />
         </LinearLayout>
     </LinearLayout>
 

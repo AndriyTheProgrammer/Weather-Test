@@ -4,7 +4,8 @@
     android:background="@color/block_background"
     android:orientation="horizontal"
     android:padding="2dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:visibility="gone">
 
     <!-- TODO: Update blank fragment layout -->
 

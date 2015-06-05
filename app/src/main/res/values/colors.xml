@@ -2,5 +2,7 @@
 <resources>
     <color name="divider">#ffc7c7c0</color>
     <color name="block_background">#fffafafa</color>
+    <color name="selected_weather">#ffff7b47</color>
+    <color name="opacity">#00ff7b47</color>
 
 </resources>

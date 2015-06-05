@@ -15,8 +15,10 @@ import com.test.weather.net.WeatherInfo;
 
 public class FullInfoFragment extends Fragment {
 
+
     TextView tvMinTemp, tvMaxTemp, tvPressure, tvHumidity, tvWindForce;
     ImageView imageWindDirection;
+    View root;
 
 
     WeatherInfo weather;
@@ -36,7 +38,7 @@ public class FullInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_full_info, container, false);
+        root = inflater.inflate(R.layout.fragment_full_info, container, false);
 
         tvMinTemp = (TextView) root.findViewById(R.id.tvMinTemp);
         tvMaxTemp = (TextView) root.findViewById(R.id.tvMaxTemp);
@@ -61,5 +63,23 @@ public class FullInfoFragment extends Fragment {
         imageWindDirection.setRotation(weather.getWindDirection() - 90);
 
     }
+
+
+    public void show(){
+        if (getActivity() != null){
+            root.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void hide(){
+        if (getActivity() != null){
+            root.setVisibility(View.GONE);
+        }
+    }
+
+    public boolean isShowing(){
+        return root.getVisibility() != View.VISIBLE;
+    }
+
 
 }
