@@ -1,8 +1,70 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
 
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.android.volley.toolbox.NetworkImageView"
+        android:id="@+id/backgroundImage"
+        android:scaleType="centerCrop"
+        android:background="@mipmap/offline_background" />
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/iconLocation"
+                    android:src="@android:drawable/ic_menu_mylocation"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="City"
+                    android:id="@+id/tvCity"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/large" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.test.weather.ui.MainInfoFragment"
+            android:id="@+id/mainInfoFragment"
+            tools:layout="@layout/fragment_main_information"
+            android:layout_margin="15dp" />
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="com.test.weather.ui.FullInfoFragment"
+            android:id="@+id/fullInfoFragment"
+            android:layout_gravity="center_horizontal"
+            tools:layout="@layout/fragment_full_info"
+            android:layout_margin="15dp" />
+    </LinearLayout>
+</FrameLayout>

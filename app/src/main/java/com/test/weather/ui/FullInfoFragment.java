@@ -1,66 +1,130 @@
 package com.test.weather.ui;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.nineoldandroids.animation.Animator;
 import com.test.weather.R;
+import com.test.weather.net.pojo.WeatherInfo;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FullInfoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class FullInfoFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FullInfoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FullInfoFragment newInstance(String param1, String param2) {
-        FullInfoFragment fragment = new FullInfoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    TextView tvMinTemp, tvMaxTemp, tvPressure, tvHumidity, tvWindForce;
+    ImageView imageWindDirection;
+    View root;
 
-    public FullInfoFragment() {
-        // Required empty public constructor
-    }
+    // Nothing special, just information about weather
+    WeatherInfo weather;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_full_info, container, false);
+        root = inflater.inflate(R.layout.fragment_full_info, container, false);
+
+        tvMinTemp = (TextView) root.findViewById(R.id.tvMinTemp);
+        tvMaxTemp = (TextView) root.findViewById(R.id.tvMaxTemp);
+        tvPressure = (TextView) root.findViewById(R.id.tvPressure);
+        tvHumidity = (TextView) root.findViewById(R.id.tvHumidity);
+        tvWindForce = (TextView) root.findViewById(R.id.tvWindForce);
+        imageWindDirection = (ImageView) root.findViewById(R.id.imageWindDirection);
+
+
+        return root;
+    }
+
+    /**
+     * Used to fill this fragment with weather information from Activity
+     * @param weather weather information
+     */
+    public void setWeather(WeatherInfo weather) {
+        this.weather = weather;
+        tvMinTemp.setText(weather.getMinTemp() + "\u00B0");
+        tvMaxTemp.setText(weather.getMaxTemp() + "\u00B0");
+        tvPressure.setText(weather.getPressure() + "hPa");
+        tvHumidity.setText(weather.getHumidity() + "%");
+        tvWindForce.setText(weather.getWindSpeed() + "mph");
+        imageWindDirection.setRotation(weather.getWindDirection() - 90);
+
+    }
+
+
+    // shows Fragment =)
+    public void show(){
+        if (getActivity() != null){
+            YoYo.with(Techniques.SlideInLeft)
+                    .duration(300)
+                    .withListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            root.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    })
+                    .playOn(root);
+        }
+    }
+
+    // and this hides Fragment =)
+    public void hide(){
+        if (getActivity() != null){
+            YoYo.with(Techniques.SlideOutRight)
+                    .duration(300)
+                    .withListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            root.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    })
+                    .playOn(root);
+
+        }
+    }
+
+    // guess what
+    public boolean isShowing(){
+        return root.getVisibility() != View.VISIBLE;
     }
 
 

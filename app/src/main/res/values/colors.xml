@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="divider">#ffc7c7c0</color>
+    <color name="block_background">#ddffffff</color>
+    <color name="selected_weather">#ddff7b47</color>
+    <color name="opacity">#00ff7b47</color>
+
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Day"
+        android:id="@+id/tvForecastDay"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/small2" />
+
+    <ImageView
+        android:layout_width="@dimen/small_ic_width"
+        android:layout_height="@dimen/small_ic_height"
+        android:id="@+id/imageForecast"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/sun" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="18 \u00B0"
+            android:id="@+id/tvForecastMaxTemp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textSize="@dimen/small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="16 \u00B0"
+            android:id="@+id/tvForecastMinTemp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/small" />
+    </LinearLayout>
+
+</LinearLayout>
