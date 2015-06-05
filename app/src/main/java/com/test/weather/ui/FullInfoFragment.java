@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.nineoldandroids.animation.Animator;
 import com.test.weather.R;
 import com.test.weather.net.pojo.WeatherInfo;
 
@@ -61,14 +64,61 @@ public class FullInfoFragment extends Fragment {
     // shows Fragment =)
     public void show(){
         if (getActivity() != null){
-            root.setVisibility(View.VISIBLE);
+            YoYo.with(Techniques.SlideInLeft)
+                    .duration(300)
+                    .withListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            root.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    })
+                    .playOn(root);
         }
     }
 
     // and this hides Fragment =)
     public void hide(){
         if (getActivity() != null){
-            root.setVisibility(View.GONE);
+            YoYo.with(Techniques.SlideOutRight)
+                    .duration(300)
+                    .withListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            root.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    })
+                    .playOn(root);
+
         }
     }
 

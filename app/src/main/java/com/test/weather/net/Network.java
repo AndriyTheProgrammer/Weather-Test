@@ -169,12 +169,13 @@ public class Network implements NetworkInterface {
         ArrayList<WeatherInfo> weatherInformation= new ArrayList<WeatherInfo>();
 
         for (WeatherPOJO.List list : weatherPOJO.getList()){
-             Date date = new Date(list.getDt());
-             SimpleDateFormat simpleDateformat = new SimpleDateFormat("E");
 
+            Date date = new Date(list.getDt() * 1000);
+
+            String day = new SimpleDateFormat("EEE").format(date);
 
             WeatherInfo weatherInfo = new WeatherInfo(
-                    simpleDateformat.format(date),
+                    day,
                     requestedCity,
                     list.getWeather()[0].getIcon(),
                     (int) list.getTemp().getMin(),
